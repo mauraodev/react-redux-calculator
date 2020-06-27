@@ -6,34 +6,39 @@ import './App.css'
 
 class App extends Component {
   state = {
-    inputValue: ''
+    inputValue1: '',
+    inputValue2: ''
   }
 
   inputChange = event => {
+    let name = event.target.name;
+
     this.setState({
-      inputValue: event.target.value
-    })
+      [name]: event.target.value
+    });
   }
 
   render() {
-    const { 
-      clickButton, 
-      newValue 
-    } = this.props;
-
-    const { inputValue } = this.state;
 
     return (
-      <div className="App" style={{ paddingTop: '10px' }}>
-        <input 
+      <div className="App">
+        <input
           onChange={this.inputChange}
-          type="text" 
-          value={inputValue}
-          />
-        <button onClick={() => clickButton(inputValue)}>
-          Click me!
+          type="text"
+          name="inputValue1"
+          value={this.inputValue1}
+        />
+
+        <input
+          onChange={this.inputChange}
+          type="text"
+          name='inputValue2'
+          value={this.inputValue2}
+        />
+
+        <button>
+          Somar
         </button>
-        <h1>{newValue}</h1>
       </div>
     )
   }
